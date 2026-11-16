@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Générateur de mots mêlés en gros caractères, gratuit à imprimer — Loupe &amp; Lettres</title>
+<meta name="description" content="Créez gratuitement votre grille de mots mêlés en gros caractères : tapez vos mots, choisissez la taille et le niveau, imprimez en A4 avec la solution. Fonctionne dans votre navigateur, rien n'est enregistré.">
+<link rel="canonical" href="https://outil-mots-meles.atelier-4efd18.workers.dev/">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="entete">
+  <p class="marque">Loupe &amp; Lettres</p>
+  <h1>Générateur de mots mêlés en gros caractères</h1>
+  <p class="intro">Tapez vos mots (ou prenez un thème), choisissez la taille et le niveau, puis imprimez une grille en grandes lettres, avec sa solution sur une seconde page. Gratuit, sans inscription : tout se passe dans votre navigateur, rien n'est envoyé ni enregistré.</p>
+</header>
+
+<main>
+<section class="reglages" aria-labelledby="titre-reglages">
+  <h2 id="titre-reglages">1. Choisissez vos réglages</h2>
+  <form id="formulaire" novalidate>
+    <label for="theme">Un thème prêt à l'emploi (12 mots)</label>
+    <select id="theme">
+      <option value="">— Mes propres mots —</option>
+      <option value="noel">Noël</option>
+      <option value="jardin">Jardin</option>
+      <option value="cuisine">Cuisine</option>
+    </select>
+
+    <label for="mots">Vos mots (un par ligne ou séparés par des virgules, 3 lettres au moins, 20 mots au plus)</label>
+    <textarea id="mots" rows="8" spellcheck="false" placeholder="Sapin&#10;Cadeau&#10;Étoile"></textarea>
+    <p class="aide">Les accents, espaces, tirets et apostrophes sont retirés dans la grille : « Étoile » devient ETOILE.</p>
+
+    <div class="ligne">
+      <div>
+        <label for="taille">Taille de la grille</label>
+        <select id="taille">
+          <option value="10">10 &times; 10</option><option value="11">11 &times; 11</option>
+          <option value="12" selected>12 &times; 12</option><option value="13">13 &times; 13</option>
+          <option value="14">14 &times; 14</option><option value="15">15 &times; 15</option>
+        </select>
+      </div>
+      <div>
+        <label for="niveau">Niveau</label>
+        <select id="niveau">
+          <option value="facile">Facile (mots vers la droite ou vers le bas)</option>
+          <option value="moyen">Moyen (avec les diagonales)</option>
+          <option value="difficile">Difficile (avec les mots à l'envers)</option>
+        </select>
+      </div>
+      <div>
+        <label for="graine">Numéro de grille</label>
+        <input id="graine" type="text" value="1" inputmode="numeric" maxlength="12">
+      </div>
+    </div>
+    <p class="aide">Même mots, même taille, même niveau et même numéro : vous retrouvez toujours la même grille.</p>
+
+    <div class="boutons">
+      <button type="submit" id="generer">Créer la grille</button>
+      <button type="button" id="autre" class="secondaire">Une autre grille</button>
+      <button type="button" id="imprimer" class="secondaire" disabled>Imprimer (A4, 2 pages)</button>
+    </div>
+  </form>
+  <div id="message" role="alert" aria-live="polite"></div>
+</section>
+
+<section class="apercu" aria-labelledby="titre-apercu">
+  <h2 id="titre-apercu">2. Votre grille</h2>
+  <p id="vide" class="aide">Votre grille apparaîtra ici dès que vous aurez cliqué sur « Créer la grille ».</p>
+  <div id="feuilles" hidden>
+    <article class="feuille" id="feuille-grille">
+      <h3 id="titre-feuille" class="titre-feuille">Mots mêlés</h3>
+      <div id="grille" class="grille" role="img" aria-label="Grille de mots mêlés"></div>
+      <h4 class="titre-liste">Mots à retrouver</h4>
+      <ul id="liste-mots" class="liste-mots"></ul>
+      <p class="pied-feuille">Loupe &amp; Lettres — créé avec l'aide de l'IA</p>
+    </article>
+    <article class="feuille" id="feuille-solution">
+      <h3 id="titre-solution" class="titre-feuille">Solution</h3>
+      <div id="grille-solution" class="grille" role="img" aria-label="Solution de la grille de mots mêlés"></div>
+      <p class="pied-feuille">Loupe &amp; Lettres — créé avec l'aide de l'IA</p>
+    </article>
+  </div>
+</section>
+
+<section class="impression" aria-labelledby="titre-impression">
+  <h2 id="titre-impression">3. Imprimer</h2>
+  <ol>
+    <li>Cliquez sur « Imprimer (A4, 2 pages) ».</li>
+    <li>Dans la fenêtre d'impression, choisissez le format A4, l'orientation portrait et laissez l'échelle à 100 %.</li>
+    <li>La page 1 contient la grille et la liste des mots ; la page 2 contient la solution (les lettres des mots sont entourées).</li>
+  </ol>
+  <p class="aide">Les lettres de la grille font 20 points à l'impression, la liste des mots 18 points.</p>
+</section>
+
+<aside class="encart" aria-labelledby="titre-encart">
+  <h2 id="titre-encart">Envie de grilles toutes prêtes ?</h2>
+  <p>Le fichier Word <strong>« Mots mêlés en gros caractères — 30 grilles à imprimer »</strong> réunit 30 grilles en gros caractères à imprimer chez vous : une grille par page, du plus facile au plus difficile. Il est vendu 4,99 € sur la boutique Loupe &amp; Lettres.</p>
+  <p><a class="lien-vente" href="https://loupeetlettres.gumroad.com/l/hnkbgz">Voir les 30 grilles en gros caractères</a></p>
+</aside>
+</main>
+
+<footer class="pied">
+  <p><strong>Loupe &amp; Lettres</strong> — outil créé avec l'aide de l'IA. Les thèmes et les textes de cette page ont été écrits avec l'aide d'une IA.</p>
+  <p>Cet outil ne collecte aucune donnée : pas de cookie, pas de mesure d'audience, pas de compte. Le calcul se fait sur votre appareil.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
